@@ -23,6 +23,9 @@
           <td><img id = "doomStalker" class = "character" src = "./dsprofile.png"/><br/><p class = "character-title" align = "center">"Spiky Face"</td>
           <td><img id = "nightshroud" class = "character" src = "./nsProfile.png"/><br/><p class = "character-title" align = "center">"Eclipse"</td>
         </tr>
+        <tr>
+          <td><img id = "sawbones" class = "character" src= "./Sawbones Back.jpg"/><br/><p class = "character-title" align = "center">"Sawbones"</td>
+        </tr>
       </table>
       <div id = "level-selection" align = "center">
         <h2 class = "header" align = "center" style= "color:white;">Select Your Level</h2>
@@ -627,6 +630,67 @@
             <button id ="nsConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
           </div>
 
+          <div id ="sawbones-perks" class ="perks hiding">
+            <div>
+              <div id ="sbPerk1-1" class = "checkbox sbPerk">
+              </div>
+              <div id ="sbPerk1-2" class = "checkbox sbPerk">
+              </div>
+              <p>Remove Two -1 Cards</p>
+            </div>
+            <div>
+              <div id ="sbPerk2" class = "checkbox sbPerk">
+              </div>
+              <p>Remove Four +0 Cards</p>
+            </div>
+            <div>
+              <div id ="sbPerk3-1" class = "checkbox sbPerk">
+              </div>
+              <div id ="sbPerk3-2" class = "checkbox sbPerk">
+              </div>
+              <p>Replace one +0 Card with one +2 card</p>
+            </div>
+            <div>
+              <div id ="sbPerk4-1" class = "checkbox sbPerk">
+              </div>
+              <div id ="sbPerk4-2" class = "checkbox sbPerk">
+              </div>
+              <p>Add one Rolling +2 card</p>
+            </div>
+            <div>
+              <div id ="sbPerk5-1" class = "checkbox sbPerk">
+              </div>
+              <div id ="sbPerk5-2" class = "checkbox sbPerk">
+              </div>
+              <p>Add one +1 Immobilize card</p>
+            </div>
+            <div>
+              <div id ="sbPerk6-1" class = "checkbox sbPerk">
+              </div>
+              <div id ="sbPerk6-2" class = "checkbox sbPerk">
+              </div>
+              <p>Add two rolling Wound cards</p>
+            </div>
+            <div>
+              <div id ="sbPerk7" class = "checkbox sbPerk">
+              </div>
+              <p>Add one Rolling stun card</p>
+            </div>
+            <div>
+              <div id ="sbPerk8-1" class = "checkbox sbPerk">
+              </div>
+              <div id ="sbPerk8-2" class = "checkbox sbPerk">
+              </div>
+              <p>Add one rolling heal +3 card</p>
+            </div>
+            <div>
+              <div id ="sbPerk9" class = "checkbox sbPerk">
+              </div>
+              <p>Add one +0 refresh an item card</p>
+            </div>
+            <button id ="sbConfirmPerksButton" class ="button" type ="button">Confirm Perks</button>
+          </div>
+
           <button id = "go-back1" class = "button hiding" type ="button">Go Back To Character Select</button>
         </div>
 
@@ -891,6 +955,8 @@
         <button id = "confirm-hand" class = "button not-without-more-selected"type="button" title="Must Have a Full Hand">Confirm Hand</button>
         <button id = "play-cards-button" class = "button hiding" type="button" title="Must Select 2 Cards, Not Have Any Cards In Play, And Not Be Resting">Play Cards</button>
         <button id = "lose-hand-card" class = "button hiding not-without-more-selected" type = "button" title="Must Have One Card Selected">Lose Card To Avoid Damage</button>
+        <button id = "get-medpack" class = "button hiding" type="button">Get Medpack</button>
+        <button id = "get-lrg-medpack" class = "button hiding" type="button">Get Large Medpack</button>
       </div>
 
       <div id = "zoomModal">

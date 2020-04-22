@@ -495,49 +495,99 @@ function checkCookie() {
         nightshroud.classList.add("character-selected");
         characterSelected = true;
         confirmCharacterButton.classList.remove("not-without-more-selected");
-        if (perk1 === "nschosen"){
+        if (perk1 === "sbchosen"){
           nsPerk1.classList.add("checked");
         }
-        if (perk2 === "nschosen"){
+        if (perk2 === "sbchosen"){
           nsPerk2.classList.add("checked");
         }
-        if (perk3 === "nschosen"){
+        if (perk3 === "sbchosen"){
           nsPerk3.classList.add("checked");
         }
-        if (perk4 === "nschosen"){
+        if (perk4 === "sbchosen"){
           nsPerk4.classList.add("checked");
         }
-        if (perk5 === "nschosen"){
+        if (perk5 === "sbchosen"){
           nsPerk5.classList.add("checked");
         }
-        if (perk6 === "nschosen"){
+        if (perk6 === "sbchosen"){
           nsPerk6.classList.add("checked");
         }
-        if (perk7 === "nschosen"){
+        if (perk7 === "sbchosen"){
           nsPerk7.classList.add("checked");
         }
-        if (perk8 === "nschosen"){
+        if (perk8 === "sbchosen"){
           nsPerk8.classList.add("checked");
         }
-        if (perk9 === "nschosen"){
+        if (perk9 === "sbchosen"){
           nsPerk9.classList.add("checked");
         }
-        if (perk10 === "nschosen"){
+        if (perk10 === "sbchosen"){
           nsPerk10.classList.add("checked");
         }
-        if (perk11 === "nschosen"){
+        if (perk11 === "sbchosen"){
           nsPerk11.classList.add("checked");
         }
-        if (perk12 === "nschosen"){
+        if (perk12 === "sbchosen"){
           nsPerk12.classList.add("checked");
         }
-        if (perk13 === "nschosen"){
+        if (perk13 === "sbchosen"){
           nsPerk13.classList.add("checked");
         }
-        if (perk14 === "nschosen"){
+        if (perk14 === "sbchosen"){
           nsPerk14.classList.add("checked");
         }
-        if (perk15 === "nschosen"){
+        if (perk15 === "sbchosen"){
+          nsPerk15.classList.add("checked");
+        }
+        break;
+      case "sawbones":
+        sawbones.classList.add("character-selected");
+        characterSelected = true;
+        confirmCharacterButton.classList.remove("not-without-more-selected");
+        if (perk1 === "sbchosen"){
+          nsPerk1.classList.add("checked");
+        }
+        if (perk2 === "sbchosen"){
+          nsPerk2.classList.add("checked");
+        }
+        if (perk3 === "sbchosen"){
+          nsPerk3.classList.add("checked");
+        }
+        if (perk4 === "sbchosen"){
+          nsPerk4.classList.add("checked");
+        }
+        if (perk5 === "sbchosen"){
+          nsPerk5.classList.add("checked");
+        }
+        if (perk6 === "sbchosen"){
+          nsPerk6.classList.add("checked");
+        }
+        if (perk7 === "sbchosen"){
+          nsPerk7.classList.add("checked");
+        }
+        if (perk8 === "sbchosen"){
+          nsPerk8.classList.add("checked");
+        }
+        if (perk9 === "sbchosen"){
+          nsPerk9.classList.add("checked");
+        }
+        if (perk10 === "sbchosen"){
+          nsPerk10.classList.add("checked");
+        }
+        if (perk11 === "sbchosen"){
+          nsPerk11.classList.add("checked");
+        }
+        if (perk12 === "sbchosen"){
+          nsPerk12.classList.add("checked");
+        }
+        if (perk13 === "sbchosen"){
+          nsPerk13.classList.add("checked");
+        }
+        if (perk14 === "sbchosen"){
+          nsPerk14.classList.add("checked");
+        }
+        if (perk15 === "sbchosen"){
           nsPerk15.classList.add("checked");
         }
         break;
@@ -641,6 +691,8 @@ let goBack = document.getElementById('go-back1');
 let goBack2 = document.getElementById('go-back2');
 let loseHandCard = document.getElementById('lose-hand-card');
 let loseDiscardButton = document.getElementById('lose-discard-button2');
+let getMedpackButton = document.getElementById('get-medpack');
+let getLargeMedpackButton = document.getElementById('get-lrg-medpack');
 //play cards variables
 
 let playCard1 = "";
@@ -680,6 +732,7 @@ let tinkerer = document.getElementById('tinkerer');
 let beastTyrant = document.getElementById('beastTyrant');
 let doomStalker = document.getElementById('doomStalker');
 let nightshroud = document.getElementById("nightshroud");
+let sawbones = document.getElementById('sawbones');
 
 //status effects
 let poisoned = false;
@@ -2052,6 +2105,150 @@ function confirmCharacter(){
       health = maxHealth;
       break;
     }
+  } else if(sawbones.classList.contains("character-selected")){
+    let characterChoice = "sawbones";
+    setCookie("character", "sawbones", 365);
+    document.getElementById("sawbones-perks").classList.remove("hiding");
+    flippedCard = "./SB/sbback.jpg";
+    handSize = 10
+    cardHand11.classList.add("hiding");
+    cardHand12.classList.add("hiding");
+    var hand = document.querySelectorAll(".hand");
+    var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+    for (var i = 0; i<cardsToChooseFrom.length; i++){
+      (function (){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        if((i>-1 && i<13) || i>14){
+          cardToChooseFrom.innerHTML = "<img id ='"+`${cardToChooseFrom.id}`+"' class = 'chooseCards "+`${cardToChooseFrom.id}`+"' src = './SB/sb"+i+".jpg' />";
+        } else {
+          cardToChooseFrom.innerHTML = '';
+        }
+      }).call(this,i);
+    }
+    for (var j = 0; j<hand.length; j++){
+      (function () {
+        var handCardBack = hand[j];
+        handCardBack.src = flippedCard;
+      }).call(this,j);
+    }
+    switch (levelCount) {
+      case 1:
+      maxHealth = 8;
+      health = maxHealth;
+      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+      for(var i = 15; i<cardsToChooseFrom.length; i++){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        cardToChooseFrom.innerHTML = "";
+      }
+      var levelTitles = document.querySelectorAll(".level");
+      for(var j = 3; j<levelTitles.length; j++){
+        var levelTitle = levelTitles[j];
+        levelTitle.classList.add("hiding");
+      }
+      break;
+      case 2:
+      maxHealth = 9;
+      health = maxHealth;
+      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+      for(var i = 17; i<cardsToChooseFrom.length; i++){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        cardToChooseFrom.innerHTML = "";
+      }
+      var levelTitles = document.querySelectorAll(".level");
+      for(var j = 4; j<levelTitles.length; j++){
+        var levelTitle = levelTitles[j];
+        levelTitle.classList.add("hiding");
+      }
+      break;
+      case 3:
+      maxHealth = 11;
+      health = maxHealth;
+      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+      for(var i = 19; i<cardsToChooseFrom.length; i++){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        cardToChooseFrom.innerHTML = "";
+      }
+      var levelTitles = document.querySelectorAll(".level");
+      for(var j = 5; j<levelTitles.length; j++){
+        var levelTitle = levelTitles[j];
+        levelTitle.classList.add("hiding");
+      }
+      break;
+      case 4:
+      maxHealth = 12;
+      health = maxHealth;
+      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+      for(var i = 21; i<cardsToChooseFrom.length; i++){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        cardToChooseFrom.innerHTML = "";
+      }
+      var levelTitles = document.querySelectorAll(".level");
+      for(var j = 6; j<levelTitles.length; j++){
+        var levelTitle = levelTitles[j];
+        levelTitle.classList.add("hiding");
+      }
+      break;
+      case 5:
+      maxHealth = 14;
+      health = maxHealth;
+      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+      for(var i = 23; i<cardsToChooseFrom.length; i++){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        cardToChooseFrom.innerHTML = "";
+      }
+      var levelTitles = document.querySelectorAll(".level");
+      for(var j = 7; j<levelTitles.length; j++){
+        var levelTitle = levelTitles[j];
+        levelTitle.classList.add("hiding");
+      }
+      break;
+      case 6:
+      maxHealth = 15;
+      health = maxHealth;
+      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+      for(var i = 25; i<cardsToChooseFrom.length; i++){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        cardToChooseFrom.innerHTML = "";
+      }
+      var levelTitles = document.querySelectorAll(".level");
+      for(var j = 8; j<levelTitles.length; j++){
+        var levelTitle = levelTitles[j];
+        levelTitle.classList.add("hiding");
+      }
+      break;
+      case 7:
+      maxHealth = 17;
+      health = maxHealth;
+      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+      for(var i = 27; i<cardsToChooseFrom.length; i++){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        cardToChooseFrom.innerHTML = "";
+      }
+      var levelTitles = document.querySelectorAll(".level");
+      for(var j = 9; j<levelTitles.length; j++){
+        var levelTitle = levelTitles[j];
+        levelTitle.classList.add("hiding");
+      }
+      break;
+      case 8:
+      maxHealth = 18;
+      health = maxHealth;
+      var cardsToChooseFrom = document.querySelectorAll(".chooseCardsTable");
+      for(var i = 29; i<cardsToChooseFrom.length; i++){
+        var cardToChooseFrom = cardsToChooseFrom[i];
+        cardToChooseFrom.innerHTML = "";
+      }
+      var levelTitles = document.querySelectorAll(".level");
+      for(var j = 10; j<levelTitles.length; j++){
+        var levelTitle = levelTitles[j];
+        levelTitle.classList.add("hiding");
+      }
+      break;
+      case 9:
+      maxHealth = 20;
+      health = maxHealth;
+      break;
+    }
   }
   goBack.classList.remove("hiding");
   document.getElementById("select-class-section").classList.add("hiding");
@@ -2293,8 +2490,20 @@ confirmHandButton.onclick = () => {
   xpDown.classList.add("at-min");
   decreaseTrackerSize.classList.add("at-min");
   loseHandCard.classList.remove("hiding");
+  getMedpackButton.classList.remove("hiding");
+  getLargeMedpackButton.classList.remove("hiding");
   shuffleDeck();
   }
+}
+getMedpackButton.onclick = () => {
+  cardHand12.src = "./SB/medpack.jpg";
+  cardHand12.classList.remove("flipped");
+  cardHand12.classList.remove("hiding");
+}
+getLargeMedpackButton.onclick = () => {
+  cardHand12.src = "./SB/medpacklrg.jpg";
+  cardHand12.classList.remove("flipped");
+  cardHand12.classList.remove("hiding");
 }
 
 //function for clicking Hand
@@ -5173,6 +5382,7 @@ let swConfirmPerksButton = document.getElementById('swConfirmPerksButton');
 let scConfirmPerksButton = document.getElementById('scConfirmPerksButton');
 let tiConfirmPerksButton = document.getElementById('tiConfirmPerksButton');
 let nsConfirmPerksButton = document.getElementById('nsConfirmPerksButton');
+let sbConfirmPerksButton = document.getElementById('sbConfirmPerksButton');
 
 
 //Cragheart
@@ -6156,7 +6366,7 @@ if(nsPerk1.classList.contains('checked')){
       cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
     }
   }
-  setCookie("perk1", "nschosen", 365);
+  setCookie("perk1", "sbchosen", 365);
 } else {
   setCookie("perk1", "notChosen", 365);
 }
@@ -6168,7 +6378,7 @@ if(nsPerk2.classList.contains('checked')){
       cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
     }
   }
-  setCookie("perk2", "nschosen", 365);
+  setCookie("perk2", "sbchosen", 365);
 } else {
   setCookie("perk2", "notChosen", 365);
 }
@@ -6180,7 +6390,7 @@ if(nsPerk3.classList.contains('checked')){
       cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
     }
   }
-  setCookie("perk3", "nschosen", 365);
+  setCookie("perk3", "sbchosen", 365);
 } else {
   setCookie("perk3", "notChosen", 365);
 }
@@ -6189,7 +6399,7 @@ if(nsPerk4.classList.contains('checked')){
   modDeckArray.push(newCard);
   hasMinus1++;
   cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
-  setCookie("perk4", "nschosen", 365);
+  setCookie("perk4", "sbchosen", 365);
 } else {
   setCookie("perk4", "notChosen", 365);
 }
@@ -6198,7 +6408,7 @@ if (nsPerk5.classList.contains('checked')){
   modDeckArray.push(newCard);
   hasMinus1++;
   cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
-  setCookie("perk5", "nschosen", 365);
+  setCookie("perk5", "sbchosen", 365);
   } else {
     setCookie("perk5", "notChosen", 365);
   }
@@ -6208,7 +6418,7 @@ if (nsPerk6.classList.contains('checked') && (hasMinus1> 0)){
       let newCard = "./nsPerks/nsPlus1Dark.png";
       modDeckArray.unshift(newCard);
       cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
-      setCookie("perk6", "nschosen", 365);
+      setCookie("perk6", "sbchosen", 365);
     } else {
       setCookie("perk6", "notChosen", 365);
     }
@@ -6218,21 +6428,21 @@ if (nsPerk7.classList.contains('checked') && (hasMinus1> 0)){
     let newCard = "./nsPerks/nsPlus1Dark.png";
     modDeckArray.unshift(newCard);
     cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
-    setCookie("perk7", "nschosen", 365);
+    setCookie("perk7", "sbchosen", 365);
 } else {
   setCookie("perk7", "notChosen", 365);
 }
 if (nsPerk8.classList.contains('checked')){
   let newCard = "./nsPerks/nsPlus1Invisible.png";
   modDeckArray.push(newCard);
-  setCookie("perk8", "nschosen", 365);
+  setCookie("perk8", "sbchosen", 365);
 } else {
   setCookie("perk8", "notChosen", 365);
 }
 if (nsPerk9.classList.contains('checked')){
   let newCard = "./nsPerks/nsPlus1Invisible.png";
   modDeckArray.push(newCard);
-  setCookie("perk9", "nschosen", 365);
+  setCookie("perk9", "sbchosen", 365);
 } else {
   setCookie("perk9", "notChosen", 365);
 }
@@ -6241,7 +6451,7 @@ if (nsPerk10.classList.contains('checked')){
   modDeckArray.push(newCard);
   modDeckArray.push(newCard);
   modDeckArray.push(newCard);
-  setCookie("perk10", "nschosen", 365);
+  setCookie("perk10", "sbchosen", 365);
 } else {
   setCookie("perk10", "notChosen", 365);
 }
@@ -6250,7 +6460,7 @@ if (nsPerk11.classList.contains('checked')){
   modDeckArray.push(newCard);
   modDeckArray.push(newCard);
   modDeckArray.push(newCard);
-  setCookie("perk11", "nschosen", 365);
+  setCookie("perk11", "sbchosen", 365);
 } else {
   setCookie("perk11", "notChosen", 365);
 }
@@ -6258,7 +6468,7 @@ if (nsPerk12.classList.contains('checked')){
   let newCard = "./nsPerks/nsRollingHeal1.png";
   modDeckArray.push(newCard);
   modDeckArray.push(newCard);
-  setCookie("perk12", "nschosen", 365);
+  setCookie("perk12", "sbchosen", 365);
 } else {
   setCookie("perk12", "notChosen", 365);
 }
@@ -6266,14 +6476,14 @@ if (nsPerk13.classList.contains('checked')){
   let newCard = "./nsPerks/nsRollingCurse.png";
   modDeckArray.push(newCard);
   modDeckArray.push(newCard);
-  setCookie("perk13", "nschosen", 365);
+  setCookie("perk13", "sbchosen", 365);
 } else {
   setCookie("perk13", "notChosen", 365);
 }
 if (nsPerk14.classList.contains('checked')){
   let newCard = "./nsPerks/nsRollingAddTarget.png";
   modDeckArray.push(newCard);
-  setCookie("perk14", "nschosen", 365);
+  setCookie("perk14", "sbchosen", 365);
 } else {
   setCookie("perk14", "notChosen", 365);
 }
@@ -6281,9 +6491,171 @@ if (nsPerk15.classList.contains('checked')){
   let newCard = "./nsPerks/nsPlus1.png";
   modDeckArray.push(newCard);
   modDeckArray.push(newCard);
-  setCookie("perk15", "nschosen", 365);
+  setCookie("perk15", "sbchosen", 365);
 } else {
   setCookie("perk15", "notChosen", 365);
+}
+defaultDeckArray = modDeckArray.slice();
+confirmPerks();
+}
+
+//sawbones
+let sbPerk1 = document.getElementById("sbPerk1-1");
+let sbPerk2 = document.getElementById("sbPerk1-2");
+let sbPerk3 = document.getElementById("sbPerk2");
+let sbPerk4 = document.getElementById("sbPerk3-1");
+let sbPerk5 = document.getElementById("sbPerk3-2");
+let sbPerk6 = document.getElementById("sbPerk4-1");
+let sbPerk7 = document.getElementById("sbPerk4-2");
+let sbPerk8 = document.getElementById("sbPerk5-1");
+let sbPerk9 = document.getElementById("sbPerk5-2");
+let sbPerk10 = document.getElementById("sbPerk6-1");
+let sbPerk11 = document.getElementById("sbPerk6-2");
+let sbPerk12 = document.getElementById("sbPerk7");
+let sbPerk13 = document.getElementById("sbPerk8-1");
+let sbPerk14 = document.getElementById("sbPerk8-2");
+let sbPerk15 = document.getElementById("sbPerk9");
+
+sbConfirmPerksButton.onclick = () => {
+if(sbPerk1.classList.contains('checked')){
+for (var i = 0; i<modDeckArray.length; i++){
+  if(modDeckArray[i] === mod12){
+    modDeckArray.splice(i, 2);
+    i = modDeckArray.length;
+    cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+  }
+}
+setCookie("perk1", "sbchosen", 365);
+} else {
+setCookie("perk1", "notChosen", 365);
+}
+if(sbPerk2.classList.contains('checked')){
+for (var i = 0; i<modDeckArray.length; i++){
+  if(modDeckArray[i] === mod14){
+    modDeckArray.splice(i, 2);
+    i = modDeckArray.length;
+    cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+  }
+}
+setCookie("perk2", "sbchosen", 365);
+} else {
+setCookie("perk2", "notChosen", 365);
+}
+if(sbPerk3.classList.contains('checked')){
+for (var i = 0; i<modDeckArray.length; i++){
+  if(modDeckArray[i] === mod1){
+    modDeckArray.splice(i, 4);
+    i = modDeckArray.length;
+    cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+  }
+}
+setCookie("perk3", "sbchosen", 365);
+} else {
+setCookie("perk3", "notChosen", 365);
+}
+if(sbPerk4.classList.contains('checked')){
+let newCard = "./sbPerks/sbplus2.jpg";
+modDeckArray.push(newCard);
+for (var i = 0; i<modDeckArray.length; i++){
+  if(modDeckArray[i] === mod5){
+    modDeckArray.splice(i, 1);
+    i = modDeckArray.length;
+  }
+}
+cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+setCookie("perk4", "sbchosen", 365);
+} else {
+setCookie("perk4", "notChosen", 365);
+}
+if (sbPerk5.classList.contains('checked')){
+let newCard = "./sbPerks/sbplus2.jpg";
+modDeckArray.push(newCard);
+for (var i = 0; i<modDeckArray.length; i++){
+  if(modDeckArray[i] === mod6){
+    modDeckArray.splice(i, 1);
+    i = modDeckArray.length;
+  }
+}
+cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+setCookie("perk5", "sbchosen", 365);
+} else {
+  setCookie("perk5", "notChosen", 365);
+}
+if (sbPerk6.classList.contains('checked') && (hasMinus1> 0)){
+    modDeckArray.pop();
+    let newCard = "./sbPerks/sbplus2rolling.jpg";
+    modDeckArray.unshift(newCard);
+    cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+    setCookie("perk6", "sbchosen", 365);
+  } else {
+    setCookie("perk6", "notChosen", 365);
+  }
+if (sbPerk7.classList.contains('checked') && (hasMinus1> 0)){
+  modDeckArray.pop();
+  let newCard = "./sbPerks/sbplus2rolling.jpg";
+  modDeckArray.unshift(newCard);
+  cardsInDeckText.innerHTML = "Cards in Deck: "+ modDeckArray.length;
+  setCookie("perk7", "sbchosen", 365);
+} else {
+setCookie("perk7", "notChosen", 365);
+}
+if (sbPerk8.classList.contains('checked')){
+let newCard = "./sbPerks/sbplus1immobilize.jpg";
+modDeckArray.push(newCard);
+setCookie("perk8", "sbchosen", 365);
+} else {
+setCookie("perk8", "notChosen", 365);
+}
+if (sbPerk9.classList.contains('checked')){
+let newCard = "./sbPerks/sbplus1immobilize.jpg";
+modDeckArray.push(newCard);
+setCookie("perk9", "sbchosen", 365);
+} else {
+setCookie("perk9", "notChosen", 365);
+}
+if (sbPerk10.classList.contains('checked')){
+let newCard = "./sbPerks/sbwound.jpg";
+modDeckArray.push(newCard);
+modDeckArray.push(newCard);
+setCookie("perk10", "sbchosen", 365);
+} else {
+setCookie("perk10", "notChosen", 365);
+}
+if (sbPerk11.classList.contains('checked')){
+  let newCard = "./sbPerks/sbwound.jpg";
+  modDeckArray.push(newCard);
+  modDeckArray.push(newCard);
+setCookie("perk11", "sbchosen", 365);
+} else {
+setCookie("perk11", "notChosen", 365);
+}
+if (sbPerk12.classList.contains('checked')){
+let newCard = "./sbPerks/sbstun.jpg";
+modDeckArray.push(newCard);
+setCookie("perk12", "sbchosen", 365);
+} else {
+setCookie("perk12", "notChosen", 365);
+}
+if (sbPerk13.classList.contains('checked')){
+let newCard = "./sbPerks/sbheal.jpg";
+modDeckArray.push(newCard);
+setCookie("perk13", "sbchosen", 365);
+} else {
+setCookie("perk13", "notChosen", 365);
+}
+if (sbPerk14.classList.contains('checked')){
+let newCard = "./sbPerks/sbheal.jpg";
+modDeckArray.push(newCard);
+setCookie("perk14", "sbchosen", 365);
+} else {
+setCookie("perk14", "notChosen", 365);
+}
+if (sbPerk15.classList.contains('checked')){
+let newCard = "./sbPerks/sbrefresh.jpg";
+modDeckArray.push(newCard);
+setCookie("perk15", "sbchosen", 365);
+} else {
+setCookie("perk15", "notChosen", 365);
 }
 defaultDeckArray = modDeckArray.slice();
 confirmPerks();
